@@ -1,8 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const cors = require('cors'); // Import the cors package
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+// Use CORS middleware
+app.use(cors({
+    origin: 'https://webc0re.github.io' // Allow requests from your GitHub Pages site
+}));
 
 app.use(bodyParser.json());
 
