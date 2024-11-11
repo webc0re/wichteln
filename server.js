@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 // Use CORS middleware
 app.use(cors({
-    origin: 'https://github.com/webc0re/wichteln' // Allow requests from your GitHub Pages site
+    origin: 'https://webc0re.github.io' // Allow requests from your GitHub Pages site
 }));
 
 app.use(bodyParser.json());
