@@ -4,24 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wichteln Matcher</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Wichteln Matcher</h1>
-    <form id="nameForm">
-        <input type="text" id="nameInput" placeholder="Enter your name" required>
-        <button type="submit">Get Match</button>
-    </form>
-    <div id="matchResult"></div>
+    <script src="snowfall.js"></script>
+    <script>let snowfall = new Snowfall({
+        // op minSpeed: 3,
+    maxSpeed: 0.5,
+    color: "#EEF5FD"
+    });
+</script>
+    
+    <h1>Wichtelmaschine</h1>
+    <div class="card">
+        <form id="nameForm">
+            <input type="text" id="nameInput" placeholder="Gib Deinen Namen ein" required>
+            <button type="submit">Wichtel finden</button>
+        </form>
+        <div id="matchResult"></div>
+    </div>
+    <section class="mountains">
+        <div class='mt1'>
+            <div class="mtsnow1"></div>
+            <div class="snow-peak-1a"></div>
+            <div class="snow-peak-1b"></div>
+        </div>
+        <div class="mt2">
+            <div class="snow2"></div>
+            <div class="snow-peak-2a"></div>
+            <div class="snow-peak-2b"></div>
+            <div class="snow-peak-2c"></div>
+        </div>
+        <div class="mt3">
+            <div class="snow3"></div>
+            <div class="snow-peak-3a"></div>
+            <div class="snow-peak-3b"></div>
+            <div class="snow-peak-3c"></div>
+            <div class="snow-peak-3d"></div>
+        </div>
+        <div class='mt4'>
+            <div class="snow4"></div>
+            <div class="snow-peak-4a"></div>
+            <div class="snow-peak-4b"></div>
+        </div>
+        <div class="mt5">
+            <div class="snow5"></div>
+            <div class="snow-peak-5a"></div>
+            <div class="snow-peak-5b"></div>
+            <div class="snow-peak-5c"></div>
+        </div>
+        <div class="mt6">
+            <div class="snow6"></div>
+            <div class="snow-peak-6a"></div>
+            <div class="snow-peak-6b"></div>
+            <div class="snow-peak-6c"></div>
+            <div class="snow-peak-6d"></div>
+        </div>
+    </section>
 
     <script>
         document.getElementById('nameForm').addEventListener('submit', async function(event) {
             event.preventDefault();
             const name = document.getElementById('nameInput').value;
-            const response = await fetch('https://wichteln.onrender.com/match', {
-       method: 'POST',
-       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify({ name })
-   });
+            const response = await fetch('/match', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name })
+            });
             const result = await response.json();
             if (result.error) {
                 document.getElementById('matchResult').innerText = result.error;

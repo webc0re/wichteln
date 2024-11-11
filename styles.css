@@ -1,0 +1,419 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #AAC0D4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('https://example.com/snowflakes.png');
+    background-size: cover;
+    min-height: 100vh; /* Allow the body to expand with content */
+    position: relative; /* Ensure absolute elements are positioned relative to the body */
+}
+
+h1 {
+    color: #b22222;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.card {
+    background-color: #F2F2F0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10; /* Ensure the card is above the mountains */
+}
+
+form {
+    margin: 0;
+    width: 100%;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #228b22;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #006400;
+}
+
+#matchResult {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #b22222;
+}
+
+.mountains {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 5; /* Ensure mountains are below the card */
+}
+
+
+.mountains {
+	width: 100%;
+}
+
+.mt1 {
+	position: absolute;
+	content: "";
+	left: 100px;
+	bottom: 0;
+	border-top: 0px solid transparent;
+	border-right: 150px solid transparent;
+	border-left: 150px solid transparent;
+	border-bottom: 300px solid #0b364f;
+	z-index: 3;
+} /*the bottom border is the only thing we see for the mts, so we give it a color. 300px is the height of the mt. All other borders should be transparent the width of the other borders will determine the angle of the triangle.*/
+
+.mtsnow1 {
+	position: absolute;
+	content: "";
+	left: -50px;
+	bottom: -100px;
+	border-top: 0px solid transparent;
+	border-right: 50px solid transparent;
+	border-left: 50px solid transparent;
+	border-bottom: 100px solid #c1cfd7;
+}
+
+.snow-peak-1a {
+	/*sharp snow edge*/
+	position: absolute;
+	content: "";
+	bottom: -130px;
+	left: -45px;
+	border-top: 30px solid #c1cfd7;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-1b {
+	position: absolute;
+	content: "";
+	bottom: -130px;
+	left: -7px;
+	border-top: 30px solid #c1cfd7;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.mt2 {
+	position: absolute;
+	content: "";
+	left: -20px;
+	bottom: 0;
+	border-top: 0px solid transparent;
+	border-right: 150px solid transparent;
+	border-left: 150px solid transparent;
+	border-bottom: 200px solid #094669;
+	z-index: 6;
+}
+
+.snow2 {
+	position: absolute;
+	content: "";
+	left: -75px;
+	bottom: -98px;
+	border-top: 0px solid transparent;
+	border-right: 75px solid transparent;
+	border-left: 75px solid transparent;
+	border-bottom: 100px solid #e4e8eb;
+}
+
+.snow-peak-2a {
+	position: absolute;
+	content: "";
+	bottom: -110px;
+	left: -60px;
+	border-top: 20px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-2b {
+	position: absolute;
+	content: "";
+	bottom: -120px;
+	left: -25px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-2c {
+	position: absolute;
+	content: "";
+	bottom: -110px;
+	right: -60px;
+	border-top: 20px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.mt3 {
+	position: absolute;
+	content: "";
+	left: 280px;
+	bottom: 0;
+	border-top: 0px solid transparent;
+	border-right: 150px solid transparent;
+	border-left: 150px solid transparent;
+	border-bottom: 175px solid #094669;
+	z-index: 6;
+}
+
+.snow3 {
+	position: absolute;
+	content: "";
+	left: -70px;
+	bottom: -80px;
+	border-top: 0px solid transparent;
+	border-right: 70px solid transparent;
+	border-left: 70px solid transparent;
+	border-bottom: 90px solid #e4e8eb;
+}
+
+.snow-peak-3a {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -60px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-3b {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -20px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-3c {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	right: -20px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-3d {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	right: -60px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.mt4 {
+	position: absolute;
+	content: "";
+	left: 800px;
+	bottom: 0;
+	border-top: 0px solid transparent;
+	border-right: 150px solid transparent;
+	border-left: 150px solid transparent;
+	border-bottom: 250px solid #0b364f;
+	z-index: 3;
+}
+
+.snow4 {
+	position: absolute;
+	content: "";
+	left: -47px;
+	bottom: -75px;
+	border-top: 0px solid transparent;
+	border-right: 47px solid transparent;
+	border-left: 47px solid transparent;
+	border-bottom: 80px solid #c1cfd7;
+}
+
+.snow-peak-4a {
+	/*sharp snow edge*/
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -45px;
+	border-top: 30px solid #c1cfd7;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+} /* the sharp snow edge an is INVERTED triangle, so we want to see the the top border,not bottom. Top border should have a color. Other borders should be transparent*/
+
+.snow-peak-4b {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -7px;
+	border-top: 30px solid #c1cfd7;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.mt5 {
+	position: absolute;
+	content: "";
+	left: 500px;
+	bottom: 0;
+	border-top: 0px solid transparent;
+	border-right: 200px solid transparent;
+	border-left: 200px solid transparent;
+	border-bottom: 150px solid #094669;
+	z-index: 6;
+}
+
+.snow5 {
+	position: absolute;
+	content: "";
+	left: -100px;
+	bottom: -75px;
+	border-top: 0px solid transparent;
+	border-right: 100px solid transparent;
+	border-left: 100px solid transparent;
+	border-bottom: 75px solid #e4e8eb;
+}
+
+.snow-peak-5a {
+	position: absolute;
+	content: "";
+	bottom: -95px;
+	left: -60px;
+	border-top: 20px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-5b {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -25px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-5c {
+	position: absolute;
+	content: "";
+	bottom: -95px;
+	right: -60px;
+	border-top: 20px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.mt6 {
+	position: absolute;
+	content: "";
+	left: 950px;
+	bottom: 0;
+	border-top: 0px solid transparent;
+	border-right: 150px solid transparent;
+	border-left: 150px solid transparent;
+	border-bottom: 175px solid #094669;
+	z-index: 6;
+}
+
+.snow6 {
+	position: absolute;
+	content: "";
+	left: -70px;
+	bottom: -80px;
+	border-top: 0px solid transparent;
+	border-right: 70px solid transparent;
+	border-left: 70px solid transparent;
+	border-bottom: 90px solid #e4e8eb;
+}
+
+.snow-peak-6a {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -60px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-6b {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	left: -20px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-6c {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	right: -20px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.snow-peak-6d {
+	position: absolute;
+	content: "";
+	bottom: -100px;
+	right: -60px;
+	border-top: 30px solid #e4e8eb;
+	border-right: 25px solid transparent;
+	border-bottom: 0px solid transparent;
+	border-left: 25px solid transparent;
+}
