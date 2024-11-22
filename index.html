@@ -72,21 +72,31 @@
         });
     </script>
     <script>
-        document.getElementById('nameForm').addEventListener('submit', async function (event) {
-            event.preventDefault();
-            const name = document.getElementById('nameInput').value;
-            const response = await fetch('/match', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name })
-            });
-            const result = await response.json();
-            if (result.error) {
-                document.getElementById('matchResult').innerText = result.error;
-            } else {
-                document.getElementById('matchResult').innerText = `Your match is: ${result.match}`;
-            }
+   document.getElementById('nameForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+    const name = document.getElementById('nameInput').value;
+    try {
+        const response = await fetch('/match', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name })
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        if (result.error) {
+            document.getElementById('matchResult').innerText = result.error;
+        } else {
+            document.getElementById('matchResult').innerText = `Your match is: ${result.match}`;
+        }
+    } catch (error) {
+        console.error('Error fetching match:', error);
+        document.getElementById('matchResult').innerText = 'An error occurred. Please try again later.';
+    }
+});
     </script>
 </body>
 
