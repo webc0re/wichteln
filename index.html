@@ -76,7 +76,7 @@ document.getElementById('nameForm').addEventListener('submit', async function (e
     event.preventDefault();
     const name = document.getElementById('nameInput').value;
     try {
-        const response = await fetch('https://wichteln.onrender.com', { // Use the full URL
+        const response = await fetch('https://wichteln.onrender.com/match', { // Use the full URL
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name })
