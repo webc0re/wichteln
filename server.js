@@ -21,7 +21,8 @@ if (fs.existsSync(matchesFile)) {
 }
 
 app.post('/match', (req, res) => {
-    const { name } = req.body;
+    const originalName = req.body.name; // Store the original case
+    const name = originalName.toLowerCase(); // Convert to lowercase for matching
 
     // Check if all matches have been made
     if (Object.keys(matches).length >= 6) {
@@ -30,14 +31,14 @@ app.post('/match', (req, res) => {
 
     // Check if the user has already been matched
     if (!matches[name]) {
-        const participants = Object.keys(matches);
+        const participants = Object.keys(matches).map(participant => participant.toLowerCase());
         if (participants.includes(name)) {
             return res.status(400).json({ error: 'You have already been matched.' });
         }
 
         // Find available matches, excluding the same name
         const availableMatches = ['Manuel H', 'Manuel E', 'Krista', 'Michael', 'Irina', 'Karsten']
-            .filter(participant => participant !== name && !Object.values(matches).includes(participant));
+            .filter(participant => participant.toLowerCase() !== name && !Object.values(matches).map(match => match.toLowerCase()).includes(participant.toLowerCase()));
         
         if (availableMatches.length === 0) {
             return res.status(400).json({ error: 'No available matches' });
@@ -56,9 +57,9 @@ app.post('/match', (req, res) => {
         }
     }
 
-    res.json({ match: matches[name] });
+    // Use the original case for display
+    res.json({ match: matches[name], originalName });
 });
-
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
