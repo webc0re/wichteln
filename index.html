@@ -90,7 +90,7 @@ document.getElementById('nameForm').addEventListener('submit', async function (e
         if (result.error) {
             document.getElementById('matchResult').innerText = result.error;
         } else {
-            document.getElementById('matchResult').innerText = `Du wichtelst: ${result.match}`;
+            document.getElementById('matchResult').innerText = `Du wichtelst  ${result.match}`;
         }
     } catch (error) {
         console.error('Error fetching match:', error);
