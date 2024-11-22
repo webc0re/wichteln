@@ -23,25 +23,37 @@ if (fs.existsSync(matchesFile)) {
 app.post('/match', (req, res) => {
     const { name } = req.body;
 
+    // Check if all matches have been made
     if (Object.keys(matches).length >= 6) {
         return res.status(400).json({ error: 'All matches have been made.' });
     }
 
+    // Check if the user has already been matched
     if (!matches[name]) {
         const participants = Object.keys(matches);
         if (participants.includes(name)) {
             return res.status(400).json({ error: 'You have already been matched.' });
         }
 
-        const availableMatches = ['Manuel H', 'Manuel E', 'Krista', 'Michael', 'Irina', 'Karsten'].filter(participant => participant !== name && !Object.values(matches).includes(participant));
+        // Find available matches, excluding the same name
+        const availableMatches = ['Manuel H', 'Manuel E', 'Krista', 'Michael', 'Irina', 'Karsten']
+            .filter(participant => participant !== name && !Object.values(matches).includes(participant));
+        
         if (availableMatches.length === 0) {
             return res.status(400).json({ error: 'No available matches' });
         }
+
+        // Randomly select a match
         const randomIndex = Math.floor(Math.random() * availableMatches.length);
         matches[name] = availableMatches[randomIndex];
 
         // Save matches to the JSON file
-        fs.writeFileSync(matchesFile, JSON.stringify(matches, null, 2));
+        try {
+            fs.writeFileSync(matchesFile, JSON.stringify(matches, null, 2));
+        } catch (error) {
+            console.error('Error writing to matches file:', error);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
     }
 
     res.json({ match: matches[name] });
